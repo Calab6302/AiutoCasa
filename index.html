@@ -16,12 +16,26 @@
     --panna:#f7f9fc;--ink:#182236;--ink-soft:#5a6678;--line:#e4e9f2;--card:#fff;
     --coral:#e05a3a;--coral-tint:#fbe3dc;--teal:#1f9a8a;
     --wa:#25d366;--wa-deep:#1aa851;
+    /* colori per i mestieri (fila icone in home) */
+    --c-idra:#2559d6;--c-idra-bg:#e4ecfd;
+    --c-elet:#e8a400;--c-elet-bg:#fcf0cf;
+    --c-imbi:#8b5cf6;--c-imbi-bg:#ede6fd;
+    --c-puli:#1f9a8a;--c-puli-bg:#d6f2ec;
+    --c-lava:#e8731c;--c-lava-bg:#fde6d4;
+    --c-tras:#e05a3a;--c-tras-bg:#fbe0d9;
+    --c-fabb:#475569;--c-fabb-bg:#e7ecf2;
     --sh:0 1px 2px rgba(24,34,54,.05),0 10px 30px rgba(37,89,214,.09);
     --sh-lg:0 20px 50px rgba(37,89,214,.16);
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{margin:0;background:var(--panna);color:var(--ink);font-family:"Inter",-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-feature-settings:"cv11","ss01";letter-spacing:-.011em}
+  body{margin:0;color:var(--ink);font-family:"Inter",-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-feature-settings:"cv11","ss01";letter-spacing:-.011em;
+    background:
+      radial-gradient(1200px 520px at 50% -140px, #d9e6ff 0%, rgba(217,230,255,0) 70%),
+      radial-gradient(760px 420px at 88% 60px, #fde7d2 0%, rgba(253,231,210,0) 68%),
+      radial-gradient(680px 420px at 6% 180px, #e0f5ef 0%, rgba(224,245,239,0) 66%),
+      var(--panna);
+    background-attachment:fixed}
   h1,h2,h3{font-family:inherit;font-weight:700;letter-spacing:-.033em;line-height:1.08;margin:0}
   .wrap{max-width:680px;margin:0 auto;padding:0 20px}
   .bar{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;max-width:680px;margin:0 auto}
@@ -31,8 +45,23 @@
   .pill{font-size:12px;font-weight:600;color:var(--bosco-deep);background:var(--bosco-tint);padding:6px 12px;border-radius:30px}
 
   /* HERO + box diagnosi */
-  .hero{text-align:center;padding:30px 0 10px}
-  .kick{display:inline-block;font-size:13px;font-weight:600;color:var(--senape-deep);background:var(--senape-tint);padding:6px 14px;border-radius:30px;margin-bottom:20px}
+  .hero{text-align:center;padding:16px 0 10px}
+  .scena{width:150px;margin:0 auto 10px;animation:saluta 4s ease-in-out infinite}
+  .scena svg{width:100%;height:auto;display:block}
+  @keyframes saluta{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+  @media(prefers-reduced-motion:reduce){.scena{animation:none}}
+  .kick{display:inline-block;font-size:13px;font-weight:600;color:var(--senape-deep);background:var(--senape-tint);padding:7px 15px;border-radius:30px;margin-bottom:18px}
+
+  /* fila mestieri in home */
+  .mestieri{max-width:600px;margin:26px auto 0}
+  .mestieri-h{font-size:12.5px;font-weight:600;color:var(--ink-soft);text-align:center;margin-bottom:14px}
+  .mestieri-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:9px}
+  @media(max-width:560px){.mestieri-grid{grid-template-columns:repeat(4,1fr)}}
+  .mest{display:flex;flex-direction:column;align-items:center;gap:7px;background:none;border:none;cursor:pointer;font-family:inherit;padding:4px}
+  .mest .mi{width:100%;aspect-ratio:1;max-width:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;transition:transform .15s,box-shadow .15s}
+  .mest .mi svg{width:58%;height:58%}
+  .mest:hover .mi{transform:translateY(-3px);box-shadow:var(--sh)}
+  .mest .ml{font-size:11px;font-weight:500;color:var(--ink-soft)}
   .hero h1{font-size:40px;margin-bottom:14px}
   .hero h1 .alt{color:var(--bosco)}
   .hero .lead{font-size:17.5px;color:var(--ink-soft);max-width:34ch;margin:0 auto 26px}
@@ -41,21 +70,25 @@
   .askbox{background:var(--card);border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh-lg);padding:10px;max-width:560px;margin:0 auto;border-top:3px solid var(--bosco)}
   .askbox textarea{width:100%;border:none;background:transparent;padding:15px 15px 6px;font-family:inherit;font-size:16.5px;color:var(--ink);resize:none;min-height:64px;line-height:1.45;outline:none}
   .askbox textarea::placeholder{color:#a8b0a9}
-  .askrow{display:flex;align-items:center;justify-content:space-between;padding:4px 8px 6px}
+  .askrow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:4px 8px 6px}
   .askrow .hint{font-size:12px;color:var(--ink-soft)}
+  @media(max-width:440px){.askrow{justify-content:flex-end}.askrow .hint{width:100%;order:2}.go{order:1}}
   .go{display:flex;align-items:center;gap:8px;background:var(--bosco);color:#fff;border:none;font-family:inherit;font-weight:600;font-size:15px;padding:12px 20px;border-radius:13px;cursor:pointer;box-shadow:0 6px 16px rgba(37,89,214,.28);transition:.15s}
   .go:hover{background:var(--bosco-deep)}
   .go svg{width:18px;height:18px}
   .chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:18px}
   .chip{font-size:13px;font-weight:500;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:30px;padding:8px 14px;cursor:pointer;box-shadow:var(--sh);transition:.15s}
   .chip:hover{border-color:var(--bosco);background:var(--bosco-tint);color:var(--bosco-deep)}
-  .subito{max-width:560px;margin:14px auto 0;display:flex;flex-direction:column;align-items:center;gap:10px}
+  .subito{max-width:560px;margin:16px auto 0;display:flex;flex-direction:column;align-items:center;gap:12px}
   .subito-or{font-size:12px;color:var(--ink-soft);position:relative;width:100%;text-align:center}
   .subito-or::before,.subito-or::after{content:"";position:absolute;top:50%;width:40%;height:1px;background:var(--line)}
   .subito-or::before{left:0}.subito-or::after{right:0}
-  .subito-btn{display:inline-flex;align-items:center;gap:9px;background:#fff;color:var(--wa-deep);border:1.5px solid var(--wa);border-radius:13px;padding:12px 18px;font-family:inherit;font-weight:600;font-size:14.5px;cursor:pointer;transition:.15s}
-  .subito-btn:hover{background:var(--wa);color:#fff}
-  .subito-btn svg{width:18px;height:18px;flex-shrink:0}
+  .subito-btn{width:100%;display:flex;flex-direction:column;align-items:center;gap:3px;background:linear-gradient(135deg,#2bdd72,#17b84f);color:#fff;border:none;border-radius:18px;padding:16px 20px;font-family:inherit;cursor:pointer;box-shadow:0 10px 26px rgba(37,211,102,.4);transition:transform .15s,box-shadow .15s;position:relative;overflow:hidden}
+  .subito-btn::after{content:"";position:absolute;top:-40%;right:-10%;width:120px;height:120px;background:rgba(255,255,255,.14);border-radius:50%}
+  .subito-btn:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(37,211,102,.5)}
+  .subito-btn .st{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px}
+  .subito-btn .st svg{width:22px;height:22px;flex-shrink:0}
+  .subito-btn .ss{font-size:12.5px;font-weight:500;color:rgba(255,255,255,.9)}
 
   .trust{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin:30px 0 8px}
   .trust div{display:flex;align-items:center;gap:7px;font-size:13.5px;color:var(--ink-soft)}
@@ -165,7 +198,21 @@
 
 <div class="wrap">
   <div class="hero" id="hero">
-    <span class="kick">Il tuo aiuto per le cose di casa</span>
+    <div class="scena" aria-hidden="true">
+      <svg viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="80" cy="110" rx="58" ry="7" fill="#1a3fa0" opacity=".08"/>
+        <path d="M30 56 L80 20 L130 56" stroke="var(--bosco)" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+        <path d="M30 54 L80 18 L130 54 L130 60 L80 24 L30 60 Z" fill="var(--senape)"/>
+        <rect x="40" y="56" width="80" height="50" rx="6" fill="#fff" stroke="var(--bosco)" stroke-width="4"/>
+        <rect x="52" y="68" width="22" height="22" rx="3" fill="var(--c-elet-bg)" stroke="var(--bosco)" stroke-width="3"/>
+        <path d="M63 68 V90 M52 79 H74" stroke="var(--bosco)" stroke-width="2.5"/>
+        <rect x="88" y="72" width="20" height="34" rx="3" fill="var(--c-puli-bg)" stroke="var(--bosco)" stroke-width="3"/>
+        <circle cx="103" cy="89" r="1.8" fill="var(--bosco)"/>
+        <circle cx="128" cy="40" r="9" fill="var(--senape)" opacity=".9"/>
+        <path d="M128 27 v-5 M128 58 v5 M141 40 h5 M110 40 h5 M137 31 l3 -3 M116 52 l3 -3 M137 49 l3 3 M116 28 l3 3" stroke="var(--senape)" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <span class="kick">👋 Il tuo aiuto per le cose di casa, a Milano</span>
     <h1>Un guaio in casa?<br><span class="alt">Vediamo insieme.</span></h1>
     <p class="lead">Raccontaci il problema a parole tue. Se puoi risolverlo da solo ti guidiamo noi, passo passo. Se serve un professionista, te lo troviamo.</p>
 
@@ -177,13 +224,18 @@
       </div>
     </div>
     <div class="subito">
-      <span class="subito-or">oppure</span>
+      <span class="subito-or">oppure, se hai fretta</span>
       <button class="subito-btn" onclick="contattoDiretto()">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.8-2.8-1.5-3.9-3.4-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>
-        So già cosa mi serve, contattatemi subito
+        <span class="st"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.8-2.8-1.5-3.9-3.4-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>Contattaci subito su WhatsApp</span>
+        <span class="ss">Ti rispondiamo noi, in giornata</span>
       </button>
     </div>
     <div class="chips" id="chips"></div>
+
+    <div class="mestieri">
+      <div class="mestieri-h">Per cosa possiamo aiutarti</div>
+      <div class="mestieri-grid" id="mestieriGrid"></div>
+    </div>
 
     <div class="trust">
       <div><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Professionisti scelti a mano</div>
@@ -254,6 +306,24 @@ let storia=null, baseProblema="";
 
 const chipsBox=el('chips');
 CHIPS.forEach(c=>{const b=document.createElement('button');b.className="chip";b.textContent=c.t;b.onclick=()=>{descEl.value=c.f;descEl.focus();};chipsBox.appendChild(b);});
+
+/* fila mestieri colorata in home */
+const MESTIERI=[
+  {k:"idraulico",l:"Idraulico",c:"idra",f:"Ho un problema con l'acqua o i tubi"},
+  {k:"lampadina",l:"Elettricista",c:"elet",f:"Ho un problema elettrico in casa"},
+  {k:"imbianchino",l:"Imbianchino",c:"imbi",f:"Devo tinteggiare una stanza"},
+  {k:"pulizie",l:"Pulizie",c:"puli",f:"Cerco qualcuno per le pulizie di casa"},
+  {k:"lavanderia",l:"Lavanderia",c:"lava",f:"Ho bisogno di lavaggio o stiro capi"},
+  {k:"traslochi",l:"Traslochi",c:"tras",f:"Devo spostare mobili o fare un trasloco"},
+  {k:"fabbro",l:"Fabbro",c:"fabb",f:"Ho un problema con serratura o serramenti"},
+];
+const mg=document.getElementById('mestieriGrid');
+if(mg){MESTIERI.forEach(m=>{
+  const b=document.createElement('button');b.className="mest";b.type="button";
+  b.innerHTML=`<span class="mi" style="background:var(--c-${m.c}-bg);color:var(--c-${m.c})">${LINEICON[m.k]}</span><span class="ml">${m.l}</span>`;
+  b.onclick=()=>{descEl.value=m.f;baseProblema=m.f;storia=[{role:"user",content:"[PRIMO TURNO] "+m.f}];passo();};
+  mg.appendChild(b);
+});}
 
 descEl.addEventListener('keydown',e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();avvia();}});
 el('go').onclick=avvia;
