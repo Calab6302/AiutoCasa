@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>AiutoCasa — problemi di casa a Milano? Ci pensiamo noi</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232559d6'/%3E%3Cpath d='M16 7L7 14.5V24a1 1 0 001 1h3v-6h10v6h3a1 1 0 001-1v-9.5L16 7z' fill='white'/%3E%3Cpath d='M16 7l9 7.5' stroke='%23ef7b1f' stroke-width='2.4' stroke-linecap='round' fill='none'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#2559d6">
+<meta name="description" content="Hai un guaio in casa a Milano? Raccontacelo: ti guidiamo a risolverlo da solo o ti troviamo un professionista fidato, scelto a mano.">
+<meta property="og:title" content="AiutoCasa — il tuo aiuto per le cose di casa a Milano">
+<meta property="og:description" content="Raccontaci il problema a parole tue. Se puoi risolverlo da solo ti guidiamo noi; se serve un professionista, te lo troviamo.">
+<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -47,10 +53,24 @@
 
   /* HERO + box diagnosi */
   .hero{text-align:center;padding:16px 0 10px}
-  .scena{width:150px;margin:0 auto 10px;animation:saluta 4s ease-in-out infinite}
-  .scena svg{width:100%;height:auto;display:block}
+  .scena{width:150px;margin:0 auto 10px}
+  .scena svg{width:100%;height:auto;display:block;animation:saluta 4s ease-in-out infinite 1.4s}
   @keyframes saluta{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-  @media(prefers-reduced-motion:reduce){.scena{animation:none}}
+  /* orchestrazione d'ingresso */
+  @keyframes entra{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes pop{0%{opacity:0;transform:scale(.8)}60%{transform:scale(1.05)}100%{opacity:1;transform:scale(1)}}
+  .hero .scena,.hero .kick,.hero h1,.hero .lead,.hero .askbox,.hero .subito{opacity:0;animation:entra .7s cubic-bezier(.2,.7,.2,1) forwards}
+  .hero .scena{animation-delay:.05s}
+  .hero .kick{animation-delay:.18s}
+  .hero h1{animation-delay:.30s}
+  .hero .lead{animation-delay:.42s}
+  .hero .askbox{animation-delay:.54s}
+  .hero .subito{animation-delay:.66s}
+  .mest{opacity:0;animation:pop .5s cubic-bezier(.2,.7,.2,1) forwards}
+  @media(prefers-reduced-motion:reduce){
+    .scena svg{animation:none}
+    .hero .scena,.hero .kick,.hero h1,.hero .lead,.hero .askbox,.hero .subito,.mest{opacity:1;animation:none}
+  }
   .kick{display:inline-block;font-size:13px;font-weight:600;color:var(--senape-deep);background:var(--senape-tint);padding:7px 15px;border-radius:30px;margin-bottom:18px}
 
   /* fila mestieri in home */
@@ -74,12 +94,14 @@
   .askrow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:4px 8px 6px}
   .askrow .hint{font-size:12px;color:var(--ink-soft)}
   @media(max-width:440px){.askrow{justify-content:flex-end}.askrow .hint{width:100%;order:2}.go{order:1}}
-  .go{display:flex;align-items:center;gap:8px;background:var(--bosco);color:#fff;border:none;font-family:inherit;font-weight:600;font-size:15px;padding:12px 20px;border-radius:13px;cursor:pointer;box-shadow:0 6px 16px rgba(37,89,214,.28);transition:.15s}
-  .go:hover{background:var(--bosco-deep)}
-  .go svg{width:18px;height:18px}
+  .go{display:flex;align-items:center;gap:8px;background:var(--bosco);color:#fff;border:none;font-family:inherit;font-weight:600;font-size:15px;padding:12px 20px;border-radius:13px;cursor:pointer;box-shadow:0 6px 16px rgba(37,89,214,.28);transition:transform .15s,box-shadow .15s,background .15s}
+  .go:hover{background:var(--bosco-deep);transform:translateY(-2px);box-shadow:0 10px 22px rgba(37,89,214,.36)}
+  .go:active{transform:translateY(0)}
+  .go svg{width:18px;height:18px;transition:transform .15s}
+  .go:hover svg{transform:translateX(3px)}
   .chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:18px}
-  .chip{font-size:13px;font-weight:500;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:30px;padding:8px 14px;cursor:pointer;box-shadow:var(--sh);transition:.15s}
-  .chip:hover{border-color:var(--bosco);background:var(--bosco-tint);color:var(--bosco-deep)}
+  .chip{font-size:13px;font-weight:500;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:30px;padding:8px 14px;cursor:pointer;box-shadow:var(--sh);transition:transform .15s,border-color .15s,background .15s,color .15s}
+  .chip:hover{border-color:var(--bosco);background:var(--bosco-tint);color:var(--bosco-deep);transform:translateY(-2px)}
   .subito{max-width:560px;margin:16px auto 0;display:flex;flex-direction:column;align-items:center;gap:12px}
   .subito-or{font-size:12px;color:var(--ink-soft);position:relative;width:100%;text-align:center}
   .subito-or::before,.subito-or::after{content:"";position:absolute;top:50%;width:40%;height:1px;background:var(--line)}
@@ -97,7 +119,7 @@
 
   /* RISULTATO (nascosto all'inizio) */
   #risultato{display:none;max-width:560px;margin:16px auto 0}
-  #risultato.on{display:block}
+  #risultato.on{display:block;animation:entra .4s cubic-bezier(.2,.7,.2,1)}
   .loading{display:none;max-width:560px;margin:20px auto;text-align:center;color:var(--ink-soft);font-size:15px}
   .loading.on{display:block}
   .spin{width:34px;height:34px;border:3px solid var(--bosco-tint);border-top-color:var(--bosco);border-radius:50%;margin:0 auto 12px;animation:sp .8s linear infinite}
@@ -136,9 +158,10 @@
   .warn{margin-top:13px;display:flex;gap:11px;padding:13px 15px;background:var(--senape-tint);border-radius:13px;font-size:13.5px;color:#9a4a0a;line-height:1.45}
   .warn svg{width:18px;height:18px;flex-shrink:0;margin-top:1px}
   .opts{display:flex;flex-direction:column;gap:9px;margin-top:14px}
-  .opt{text-align:left;background:var(--panna);border:1.5px solid var(--line);border-radius:13px;padding:13px 15px;font-family:inherit;font-size:15px;color:var(--ink);cursor:pointer;display:flex;align-items:center;gap:11px;transition:.15s}
-  .opt:hover{border-color:var(--bosco);background:var(--bosco-tint)}
-  .opt .dot{width:9px;height:9px;border-radius:50%;background:var(--bosco);flex-shrink:0}
+  .opt{text-align:left;background:var(--panna);border:1.5px solid var(--line);border-radius:13px;padding:13px 15px;font-family:inherit;font-size:15px;color:var(--ink);cursor:pointer;display:flex;align-items:center;gap:11px;transition:transform .15s,border-color .15s,background .15s}
+  .opt:hover{border-color:var(--bosco);background:var(--bosco-tint);transform:translateX(3px)}
+  .opt .dot{width:9px;height:9px;border-radius:50%;background:var(--bosco);flex-shrink:0;transition:transform .15s}
+  .opt:hover .dot{transform:scale(1.3)}
   .risp-libera{margin-top:16px}
   .risp-sep{text-align:center;font-size:12px;color:var(--ink-soft);margin-bottom:10px;position:relative}
   .risp-sep::before,.risp-sep::after{content:"";position:absolute;top:50%;width:28%;height:1px;background:var(--line)}
@@ -203,6 +226,30 @@
   .whyitem:nth-child(4) .ic{background:#e4ecfd;color:#8fb3ff}
   .whyitem h3{color:#fff;font-size:16px;margin-bottom:3px}
   .whyitem p{margin:0;font-size:13.5px;color:rgba(255,255,255,.82);line-height:1.5}
+  /* sezione professionisti */
+  .pro-sec{background:linear-gradient(160deg,#16244a,#1a3fa0);border-radius:26px;padding:40px 30px;color:#fff;text-align:center;position:relative;overflow:hidden}
+  .pro-sec::before{content:"";position:absolute;top:-60px;left:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(239,123,31,.3),transparent 70%)}
+  .pro-badge{display:inline-block;font-size:12px;font-weight:600;color:var(--senape);background:rgba(239,123,31,.16);padding:7px 15px;border-radius:30px;margin-bottom:16px;position:relative}
+  .pro-h{color:#fff;font-size:26px;margin-bottom:12px;position:relative}
+  .pro-lead{color:rgba(255,255,255,.8);font-size:15px;max-width:46ch;margin:0 auto 28px;position:relative}
+  .pro-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:28px;position:relative;text-align:left}
+  @media(max-width:620px){.pro-grid{grid-template-columns:1fr}}
+  .pro-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:20px}
+  .pro-ic{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+  .pro-ic svg{width:21px;height:21px}
+  .pro-card h3{color:#fff;font-size:16px;margin-bottom:6px}
+  .pro-card p{margin:0;font-size:13.5px;color:rgba(255,255,255,.78);line-height:1.5}
+  .pro-cta{display:inline-flex;align-items:center;gap:10px;background:var(--wa);color:#fff;text-decoration:none;font-weight:700;font-size:15.5px;padding:15px 26px;border-radius:14px;box-shadow:0 10px 26px rgba(37,211,102,.4);transition:transform .15s,box-shadow .15s;position:relative}
+  .pro-cta:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(37,211,102,.5)}
+  .pro-cta svg{width:20px;height:20px}
+  /* FAQ */
+  .faq{display:flex;flex-direction:column;gap:10px}
+  .faq-item{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--sh);overflow:hidden}
+  .faq-q{width:100%;text-align:left;background:none;border:none;font-family:inherit;font-size:15.5px;font-weight:600;color:var(--ink);padding:17px 20px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .faq-q .fx{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:var(--bosco-tint);color:var(--bosco);display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:600;transition:transform .2s}
+  .faq-item.open .fx{transform:rotate(45deg)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease}
+  .faq-a p{margin:0;padding:0 20px 18px;font-size:14px;color:var(--ink-soft);line-height:1.55}
   footer{text-align:center;padding:34px 20px 50px;color:var(--ink-soft);font-size:13px;border-top:1px solid var(--line);margin-top:40px}
   footer .fl{font-weight:700;font-size:16px;letter-spacing:-.02em;color:var(--bosco-deep);margin-bottom:5px}
 </style>
@@ -293,6 +340,25 @@
         </div>
       </div>
     </section>
+
+    <section style="padding-top:10px">
+      <div class="pro-sec">
+        <div class="pro-badge">Sei un professionista?</div>
+        <h2 class="pro-h">Lavora con noi, non per una piattaforma.</h2>
+        <p class="pro-lead">Cerchiamo idraulici, elettricisti, imbianchini e altri professionisti seri a Milano. Niente abbonamenti, niente penali: ti presentiamo clienti già pronti.</p>
+        <div class="pro-grid">
+          <div class="pro-card"><div class="pro-ic" style="background:var(--c-puli-bg);color:var(--c-puli)"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><h3>Solo clienti veri</h3><p>Ti mandiamo richieste di persone che hanno davvero bisogno, già inquadrate. Niente tempo perso.</p></div>
+          <div class="pro-card"><div class="pro-ic" style="background:var(--c-elet-bg);color:var(--c-elet)"><svg viewBox="0 0 24 24" fill="none"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><h3>Zero costi fissi</h3><p>Non paghi per esserci. Guadagniamo solo quando guadagni tu, su lavori che accetti.</p></div>
+          <div class="pro-card"><div class="pro-ic" style="background:var(--c-tras-bg);color:var(--c-tras)"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div><h3>La tua reputazione, protetta</h3><p>Ti mandiamo solo lavori nella tua zona e nelle tue competenze. Il cliente sa già cosa aspettarsi.</p></div>
+        </div>
+        <a class="pro-cta" href="#" onclick="return contattoPro(event)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.8-2.8-1.5-3.9-3.4-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>Voglio lavorare con voi</a>
+      </div>
+    </section>
+
+    <section style="padding-top:10px">
+      <div class="sec-h"><h2>Domande frequenti</h2><p>Le cose che ci chiedono più spesso.</p></div>
+      <div class="faq" id="faq"></div>
+    </section>
   </div>
 </div>
 
@@ -346,12 +412,41 @@ const MESTIERI=[
   {k:"montaggio",l:"Montaggio",c:"mont",f:"Devo montare o fissare un mobile"},
 ];
 const mg=document.getElementById('mestieriGrid');
-if(mg){MESTIERI.forEach(m=>{
+if(mg){MESTIERI.forEach((m,i)=>{
   const b=document.createElement('button');b.className="mest";b.type="button";
+  b.style.animationDelay=(0.8+i*0.07)+"s";
   b.innerHTML=`<span class="mi" style="background:var(--c-${m.c}-bg);color:var(--c-${m.c})">${LINEICON[m.k]}</span><span class="ml">${m.l}</span>`;
   b.onclick=()=>{descEl.value=m.f;baseProblema=m.f;storia=[{role:"user",content:"[PRIMO TURNO] "+m.f}];passo();};
   mg.appendChild(b);
 });}
+
+/* FAQ — domande vere, nessun dato inventato */
+const FAQ=[
+  {q:"Quanto costa usare AiutoCasa?",a:"Per te che hai un problema in casa, scriverci e farti aiutare non costa nulla. Se serve un professionista, ti diciamo prima una stima di prezzo; il costo del lavoro lo concordi direttamente con lui."},
+  {q:"Come fate a scegliere i professionisti?",a:"Li selezioniamo noi, uno per uno, a Milano. Lavoriamo solo con persone di cui ci fidiamo e che manderemmo a casa nostra. Non è un elenco automatico: è una scelta fatta a mano."},
+  {q:"Cosa succede dopo che vi scrivo su WhatsApp?",a:"Ti rispondiamo noi, capiamo bene cosa ti serve e ti mettiamo in contatto con la persona giusta della tua zona, dicendoti tempi e una stima di prezzo prima di muovere qualsiasi cosa."},
+  {q:"E se posso risolverlo da solo?",a:"Meglio così, e te lo diciamo chiaramente. Se è una cosa semplice e sicura, ti guidiamo passo passo a sistemarla da solo, gratis. Chiamiamo un professionista solo quando serve davvero."},
+  {q:"Siete un'azienda o una persona?",a:"AiutoCasa nasce a Milano come servizio vicino alle persone. Dietro non c'è un call center: c'è chi legge il tuo messaggio e ti segue finché il problema non è risolto."},
+];
+const fq=document.getElementById('faq');
+if(fq){FAQ.forEach(f=>{
+  const d=document.createElement('div');d.className="faq-item";
+  d.innerHTML=`<button class="faq-q" type="button"><span>${f.q}</span><span class="fx">+</span></button><div class="faq-a"><p>${f.a}</p></div>`;
+  const btn=d.querySelector('.faq-q'),ans=d.querySelector('.faq-a');
+  btn.onclick=()=>{const open=d.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(o=>{o.classList.remove('open');o.querySelector('.faq-a').style.maxHeight=null;});
+    if(!open){d.classList.add('open');ans.style.maxHeight=ans.scrollHeight+"px";}
+  };
+  fq.appendChild(d);
+});}
+
+/* pulsante professionisti → WhatsApp con messaggio dedicato */
+function contattoPro(ev){
+  ev.preventDefault();
+  const msg=encodeURIComponent("Ciao AiutoCasa! 👋\n\nSono un professionista e vorrei lavorare con voi.\n\n• 🔧 Che lavoro faccio: \n• 📍 Zona di Milano in cui lavoro: \n• 📞 Un recapito: ");
+  window.open("https://wa.me/"+TEL+"?text="+msg,"_blank","noopener");
+  return false;
+}
 
 descEl.addEventListener('keydown',e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();avvia();}});
 el('go').onclick=avvia;
