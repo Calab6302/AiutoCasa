@@ -30,7 +30,7 @@
     --c-lava:#e8731c;--c-lava-bg:#fde6d4;
     --c-tras:#e05a3a;--c-tras-bg:#fbe0d9;
     --c-fabb:#475569;--c-fabb-bg:#e7ecf2;
-    --c-mont:#0ea5a0;--c-mont-bg:#d2f2f0;
+    --c-tutt:#0ea5a0;--c-tutt-bg:#d2f2f0;
     --sh:0 1px 2px rgba(24,34,54,.05),0 10px 30px rgba(37,89,214,.09);
     --sh-lg:0 20px 50px rgba(37,89,214,.16);
   }
@@ -373,17 +373,26 @@ const TEL="39XXXXXXXXXX"; // <-- sostituisci col tuo numero WhatsApp (es. 393331
 const ART={idraulico:"un idraulico",elettricista:"un elettricista",imbianchino:"un imbianchino","impresa di pulizie":"un'impresa di pulizie","impresa di lavanderia":"un servizio di lavanderia","ditta traslochi / sgombero":"una ditta di traslochi","fabbro / serramenti":"un fabbro",generico:"una persona adatta"};
 const IMGKEY={idraulico:"idraulico",elettricista:"lampadina",imbianchino:"imbianchino","impresa di pulizie":"pulizie","impresa di lavanderia":"lavanderia","ditta traslochi / sgombero":"traslochi","fabbro / serramenti":"fabbro",generico:"idraulico"}
 /* Icone a linee moderne (tratto), ereditano il colore via currentColor */
-const S='stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"';
+const S='stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"';
 const LINEICON={
-  idraulico:`<svg viewBox="0 0 48 48"><path ${S} d="M7 19h9v-4h5v4h9a9 9 0 019 9v3"/><path ${S} d="M6 15h4v8H6z"/><path ${S} d="M38 34c0 3.5-2.5 6-2.5 6S33 37.5 33 34a2.5 2.5 0 015 0z"/></svg>`,
-  lampadina:`<svg viewBox="0 0 48 48"><path ${S} d="M24 6a13 13 0 00-8 23.3c1.6 1.4 2 2.8 2 4.2V36h12v-2.5c0-1.4.4-2.8 2-4.2A13 13 0 0024 6z"/><path ${S} d="M19 40h10M21 44h6"/></svg>`,
-  imbianchino:`<svg viewBox="0 0 48 48"><rect x="7" y="9" width="24" height="10" rx="1.5" ${S}/><path ${S} d="M31 12h6a2 2 0 012 2v4a2 2 0 01-2 2H24a2 2 0 00-2 2v4"/><rect x="18" y="29" width="8" height="12" rx="2" ${S}/></svg>`,
-  pulizie:`<svg viewBox="0 0 48 48"><path ${S} d="M30 6L17 24M25 8l7 4"/><path ${S} d="M13 24h17l-2.2 13.5A3 3 0 0124.8 40H18.2a3 3 0 01-3-2.5z"/><path ${S} d="M19 29v6M24 29v6M29 29v6"/></svg>`,
-  lavanderia:`<svg viewBox="0 0 48 48"><rect x="10" y="6" width="28" height="36" rx="3" ${S}/><circle cx="24" cy="27" r="9" ${S}/><path ${S} d="M18 27a6 6 0 0012 0"/><path ${S} d="M16 12h.01M22 12h.01"/></svg>`,
-  traslochi:`<svg viewBox="0 0 48 48"><path ${S} d="M6 17L24 8l18 9v3L24 29 6 20z"/><path ${S} d="M6 20v13l18 9 18-9V20"/><path ${S} d="M24 29v13M17 13l14 7"/></svg>`,
-  fabbro:`<svg viewBox="0 0 48 48"><circle cx="17" cy="17" r="9" ${S}/><circle cx="17" cy="17" r="2.5" ${S}/><path ${S} d="M23.5 23.5L40 40M37 36l4 1-1-4"/></svg>`,
+  // rubinetto con goccia
+  idraulico:`<svg viewBox="0 0 48 48"><path ${S} d="M8 20h8v-5h6v5h8a4 4 0 014 4v4"/><path ${S} d="M8 20v4h8v-4"/><path ${S} d="M34 29c0 3-2.4 5-2.4 5S29 32 29 29a2.4 2.4 0 014.8 0z"/></svg>`,
+  // lampadina
+  lampadina:`<svg viewBox="0 0 48 48"><path ${S} d="M24 7a12 12 0 00-7.5 21.4c1.4 1.2 1.9 2.4 2 4.1l.1 1.5h11l.1-1.5c.1-1.7.6-2.9 2-4.1A12 12 0 0024 7z"/><path ${S} d="M20 38h8M22 42h4"/></svg>`,
+  // rullo da imbianchino
+  imbianchino:`<svg viewBox="0 0 48 48"><rect x="8" y="10" width="22" height="9" rx="2" ${S}/><path ${S} d="M30 14.5h6a2 2 0 012 2v3a2 2 0 01-2 2H25a2.5 2.5 0 00-2.5 2.5V28"/><rect x="18.5" y="28" width="8" height="12" rx="2" ${S}/></svg>`,
+  // secchio e scopa
+  pulizie:`<svg viewBox="0 0 48 48"><path ${S} d="M29 7L18.5 23"/><path ${S} d="M24 9l6 3.5"/><path ${S} d="M14 23h18l-1.8 13A3 3 0 0127.2 39H18.8a3 3 0 01-3-2.6z"/><path ${S} d="M20 28v6M24 28v6M28 28v6"/></svg>`,
+  // lavatrice
+  lavanderia:`<svg viewBox="0 0 48 48"><rect x="11" y="7" width="26" height="34" rx="3" ${S}/><path ${S} d="M11 14h26"/><circle cx="24" cy="27" r="8" ${S}/><path ${S} d="M18.5 27a5.5 5.5 0 0011 0" /><circle cx="16" cy="10.5" r=".6" fill="currentColor" stroke="none"/><circle cx="20" cy="10.5" r=".6" fill="currentColor" stroke="none"/></svg>`,
+  // scatolone trasloco
+  traslochi:`<svg viewBox="0 0 48 48"><path ${S} d="M8 17l16-7 16 7-16 7z"/><path ${S} d="M8 17v14l16 7 16-7V17"/><path ${S} d="M24 24v14"/><path ${S} d="M16 13.5v6.5l4 1.7"/></svg>`,
+  // chiave del fabbro
+  fabbro:`<svg viewBox="0 0 48 48"><path ${S} d="M30 10a8 8 0 00-7.3 11.2L10 34v4h4l2-2h3v-3h3l1.8-1.8A8 8 0 0030 10z"/><circle cx="31" cy="17" r="2.4" ${S}/></svg>`,
+  // casa generica
   casa:`<svg viewBox="0 0 48 48"><path ${S} d="M8 23L24 9l16 14"/><path ${S} d="M12 20v18h24V20"/><path ${S} d="M20 38v-9h8v9"/></svg>`,
-  montaggio:`<svg viewBox="0 0 48 48"><path ${S} d="M30 11a7 7 0 00-9 9L11 30l7 7 10-10a7 7 0 009-9l-5 5-4-1-1-4z"/><path ${S} d="M13 35l4-4"/></svg>`
+  // cassetta degli attrezzi (tuttofare)
+  tuttofare:`<svg viewBox="0 0 48 48"><path ${S} d="M18 13h12v4h-12z"/><rect x="8" y="17" width="32" height="20" rx="3" ${S}/><path ${S} d="M8 25h32"/><path ${S} d="M20 25v3h8v-3"/></svg>`
 };
 function iconaMestiere(m){const k=IMGKEY[m]||"casa";return LINEICON[k]||LINEICON.casa;};
 const CHIPS=[
@@ -409,7 +418,7 @@ const MESTIERI=[
   {k:"lavanderia",l:"Lavanderia",c:"lava",f:"Ho bisogno di lavaggio o stiro capi"},
   {k:"traslochi",l:"Traslochi",c:"tras",f:"Devo spostare mobili o fare un trasloco"},
   {k:"fabbro",l:"Fabbro",c:"fabb",f:"Ho un problema con serratura o serramenti"},
-  {k:"montaggio",l:"Montaggio",c:"mont",f:"Devo montare o fissare un mobile"},
+  {k:"tuttofare",l:"Tuttofare",c:"tutt",f:"Ho bisogno di un tuttofare per piccoli lavori in casa"},
 ];
 const mg=document.getElementById('mestieriGrid');
 if(mg){MESTIERI.forEach((m,i)=>{
