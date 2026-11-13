@@ -24,6 +24,7 @@
     --c-lava:#e8731c;--c-lava-bg:#fde6d4;
     --c-tras:#e05a3a;--c-tras-bg:#fbe0d9;
     --c-fabb:#475569;--c-fabb-bg:#e7ecf2;
+    --c-mont:#0ea5a0;--c-mont-bg:#d2f2f0;
     --sh:0 1px 2px rgba(24,34,54,.05),0 10px 30px rgba(37,89,214,.09);
     --sh-lg:0 20px 50px rgba(37,89,214,.16);
   }
@@ -55,7 +56,7 @@
   /* fila mestieri in home */
   .mestieri{max-width:600px;margin:26px auto 0}
   .mestieri-h{font-size:12.5px;font-weight:600;color:var(--ink-soft);text-align:center;margin-bottom:14px}
-  .mestieri-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:9px}
+  .mestieri-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:9px}
   @media(max-width:560px){.mestieri-grid{grid-template-columns:repeat(4,1fr)}}
   .mest{display:flex;flex-direction:column;align-items:center;gap:7px;background:none;border:none;cursor:pointer;font-family:inherit;padding:4px}
   .mest .mi{width:100%;aspect-ratio:1;max-width:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;transition:transform .15s,box-shadow .15s}
@@ -171,9 +172,22 @@
   .sec-h{text-align:center;margin-bottom:28px}
   .sec-h h2{font-size:27px;margin-bottom:9px}
   .sec-h p{color:var(--ink-soft);font-size:15.5px;max-width:40ch;margin:0 auto}
+  /* slogan fatto a mano */
+  .claim-sec{padding:28px 0 20px}
+  .claim{position:relative;text-align:center;background:linear-gradient(135deg,#fff7ef,#fdeede);border:1px solid #f6dcc3;border-radius:24px;padding:34px 28px 30px;box-shadow:0 14px 40px rgba(239,123,31,.12);overflow:hidden}
+  .claim::before{content:"";position:absolute;top:-30px;right:-20px;width:120px;height:120px;background:radial-gradient(circle,rgba(239,123,31,.18),transparent 70%)}
+  .claim-mark{font-family:Georgia,serif;font-size:60px;line-height:0;color:var(--senape);height:26px}
+  .claim-txt{font-size:25px;font-weight:700;letter-spacing:-.03em;line-height:1.18;color:var(--ink);margin:6px 0 0}
+  .claim-txt span{color:var(--senape-deep)}
+  .claim-sub{font-size:14px;color:var(--ink-soft);max-width:42ch;margin:14px auto 0;line-height:1.55}
+  @media(max-width:560px){.claim-txt{font-size:21px}}
+
   .hiw{display:grid;gap:14px}
   .hiw .step{display:flex;gap:16px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 22px;box-shadow:var(--sh)}
-  .hiw .step .n{width:38px;height:38px;flex-shrink:0;border-radius:11px;background:var(--bosco-tint);color:var(--bosco-deep);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:17px}
+  .hiw .step .n{width:38px;height:38px;flex-shrink:0;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:17px}
+  .hiw .step:nth-child(1) .n{background:var(--bosco-tint);color:var(--bosco)}
+  .hiw .step:nth-child(2) .n{background:var(--senape-tint);color:var(--senape-deep)}
+  .hiw .step:nth-child(3) .n{background:var(--c-puli-bg);color:var(--c-puli)}
   .hiw .step h3{font-size:17.5px;margin-bottom:4px}
   .hiw .step p{margin:0;color:var(--ink-soft);font-size:14.5px}
   .why{background:var(--bosco);border-radius:24px;padding:38px 32px;color:#fff}
@@ -181,8 +195,12 @@
   .whygrid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
   @media(max-width:560px){.whygrid{grid-template-columns:1fr}}
   .whyitem{display:flex;gap:12px;align-items:flex-start}
-  .whyitem .ic{width:36px;height:36px;flex-shrink:0;border-radius:11px;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center}
-  .whyitem .ic svg{width:19px;height:19px;color:var(--senape)}
+  .whyitem .ic{width:38px;height:38px;flex-shrink:0;border-radius:11px;display:flex;align-items:center;justify-content:center}
+  .whyitem .ic svg{width:20px;height:20px}
+  .whyitem:nth-child(1) .ic{background:#fde6d4;color:var(--senape)}
+  .whyitem:nth-child(2) .ic{background:#d6f2ec;color:#5fe0c4}
+  .whyitem:nth-child(3) .ic{background:#fcf0cf;color:#ffcf4d}
+  .whyitem:nth-child(4) .ic{background:#e4ecfd;color:#8fb3ff}
   .whyitem h3{color:#fff;font-size:16px;margin-bottom:3px}
   .whyitem p{margin:0;font-size:13.5px;color:rgba(255,255,255,.82);line-height:1.5}
   footer{text-align:center;padding:34px 20px 50px;color:var(--ink-soft);font-size:13px;border-top:1px solid var(--line);margin-top:40px}
@@ -227,7 +245,7 @@
       <span class="subito-or">oppure, se hai fretta</span>
       <button class="subito-btn" onclick="contattoDiretto()">
         <span class="st"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.8-2.8-1.5-3.9-3.4-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>Contattaci subito su WhatsApp</span>
-        <span class="ss">Ti rispondiamo noi, in giornata</span>
+        <span class="ss">Ti rispondiamo noi, subito</span>
       </button>
     </div>
     <div class="chips" id="chips"></div>
@@ -247,6 +265,14 @@
   <div id="risultato"></div>
 
   <div class="below" id="below">
+    <section class="claim-sec">
+      <div class="claim">
+        <div class="claim-mark">“</div>
+        <p class="claim-txt">Le cose fatte bene si vedono.<br><span>Da mani esperte, scelte a mano da noi.</span></p>
+        <div class="claim-sub">Niente app anonime, niente numeri a caso: dietro ogni intervento c'è una persona vera che conosciamo e di cui ci fidiamo.</div>
+      </div>
+    </section>
+
     <section style="padding-top:10px">
       <div class="sec-h"><h2>Come funziona</h2><p>Non ti diamo numeri a caso. Prima capiamo, poi risolviamo.</p></div>
       <div class="hiw">
@@ -290,7 +316,8 @@ const LINEICON={
   lavanderia:`<svg viewBox="0 0 48 48"><rect x="10" y="6" width="28" height="36" rx="3" ${S}/><circle cx="24" cy="27" r="9" ${S}/><path ${S} d="M18 27a6 6 0 0012 0"/><path ${S} d="M16 12h.01M22 12h.01"/></svg>`,
   traslochi:`<svg viewBox="0 0 48 48"><path ${S} d="M6 17L24 8l18 9v3L24 29 6 20z"/><path ${S} d="M6 20v13l18 9 18-9V20"/><path ${S} d="M24 29v13M17 13l14 7"/></svg>`,
   fabbro:`<svg viewBox="0 0 48 48"><circle cx="17" cy="17" r="9" ${S}/><circle cx="17" cy="17" r="2.5" ${S}/><path ${S} d="M23.5 23.5L40 40M37 36l4 1-1-4"/></svg>`,
-  casa:`<svg viewBox="0 0 48 48"><path ${S} d="M8 23L24 9l16 14"/><path ${S} d="M12 20v18h24V20"/><path ${S} d="M20 38v-9h8v9"/></svg>`
+  casa:`<svg viewBox="0 0 48 48"><path ${S} d="M8 23L24 9l16 14"/><path ${S} d="M12 20v18h24V20"/><path ${S} d="M20 38v-9h8v9"/></svg>`,
+  montaggio:`<svg viewBox="0 0 48 48"><path ${S} d="M30 11a7 7 0 00-9 9L11 30l7 7 10-10a7 7 0 009-9l-5 5-4-1-1-4z"/><path ${S} d="M13 35l4-4"/></svg>`
 };
 function iconaMestiere(m){const k=IMGKEY[m]||"casa";return LINEICON[k]||LINEICON.casa;};
 const CHIPS=[
@@ -316,6 +343,7 @@ const MESTIERI=[
   {k:"lavanderia",l:"Lavanderia",c:"lava",f:"Ho bisogno di lavaggio o stiro capi"},
   {k:"traslochi",l:"Traslochi",c:"tras",f:"Devo spostare mobili o fare un trasloco"},
   {k:"fabbro",l:"Fabbro",c:"fabb",f:"Ho un problema con serratura o serramenti"},
+  {k:"montaggio",l:"Montaggio",c:"mont",f:"Devo montare o fissare un mobile"},
 ];
 const mg=document.getElementById('mestieriGrid');
 if(mg){MESTIERI.forEach(m=>{
@@ -470,7 +498,7 @@ function mostraPro(out){
       <h3>Te lo troviamo noi</h3>
       <p>Una persona seria e verificata della tua zona. Scrivici e ci pensiamo noi.</p>
       <a class="wa-btn" href="https://wa.me/${TEL}?text=${msg}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.8-2.8-1.5-3.9-3.4-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>Scrivici su WhatsApp</a>
-      <p class="micro">Dicci la tua zona e ti rispondiamo in giornata. Il prezzo esatto lo conferma il professionista.</p>
+      <p class="micro">Dicci la tua zona e ti rispondiamo subito. Il prezzo esatto lo conferma il professionista.</p>
     </div>`);
 }
 
@@ -488,7 +516,7 @@ function contattoDiretto(){
       <p style="text-align:center">Scrivici su WhatsApp: ti rispondiamo noi e ti troviamo la persona giusta.</p>
       <div class="attesa">
         <div class="att"><span class="attn">1</span><div><b>Ci scrivi il problema</b><br><span>Il messaggio è già pronto: aggiungi zona e quando ti fa comodo.</span></div></div>
-        <div class="att"><span class="attn">2</span><div><b>Ti rispondiamo in giornata</b><br><span>Cerchiamo tra i professionisti fidati della tua zona.</span></div></div>
+        <div class="att"><span class="attn">2</span><div><b>Ti rispondiamo subito</b><br><span>Cerchiamo tra i professionisti fidati della tua zona.</span></div></div>
         <div class="att"><span class="attn">3</span><div><b>Ti diciamo chi, quando e quanto</b><br><span>Nome, tempi e stima di prezzo prima di muovere un dito.</span></div></div>
       </div>
       <a class="wa-btn" href="https://wa.me/${TEL}?text=${msg}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.8-2.8-1.5-3.9-3.4-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>Scrivici su WhatsApp</a>
